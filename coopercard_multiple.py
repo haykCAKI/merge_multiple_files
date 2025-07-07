@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import io
 import re
+import os
 
 from supabase import create_client, Client
 
@@ -174,5 +175,8 @@ def upload_files():
 
     return render_template_string(HTML_PAGE)
 
+# if __name__ == '__main__':
+#     app.run(debug=True)
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # usa a porta definida pelo Render, ou 5000 localmente
+    app.run(host='0.0.0.0', port=port)
